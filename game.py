@@ -10,7 +10,16 @@ clock = pygame.time.Clock()
 running = True
 p1 = 25
 p2 = 25
-vel = [3, 3]
+
+rand = random.randint(1,4)
+if rand == 1:
+    vel = [3, 3]
+if rand == 2:
+    vel = [-3, 3]
+if rand == 3:
+    vel = [-3, -3]
+if rand == 4:
+    vel = [3, -3]
 ball = [390, 290]
 
 
@@ -57,10 +66,12 @@ while running:
         vel[1] *= -1
     if ball[0] + 10 >= 800:
         vel[0] *= -1
+        exit()
     if ball[1] <= 0:
         vel[1] *= -1
     if ball[0] <= 0:
         vel[0] *= -1
+        exit()
     if ball[0] - 10 <= 25:
         if p1 <= ball[1] <= p1 + 50:
             vel[0] *= -1.02
